@@ -87,23 +87,37 @@ const accuracy = (s) => (s && s.total ? s.right / s.total : null);
 
 // ---------- Audio ----------
 
+// If a recording hasn't started playing within this time (weak/no signal),
+// give up on it and use the device's Cantonese text-to-speech voice instead.
+const AUDIO_TIMEOUT_MS = 2000;
+
 let currentAudio = null;
+let audioTimer = null;
+let playToken = 0; // bumps on every play/stop so stale callbacks are ignored
+
 function playCard(card) {
   stopAudio();
-  if (card.audio.length) {
-    let i = 0;
-    const playNext = () => {
-      if (i >= card.audio.length) return;
-      const a = new Audio(card.audio[i++]);
-      currentAudio = a;
-      a.onended = playNext;
-      a.onerror = () => speak(card); // fall back to TTS if a link is broken/offline
-      a.play().catch(() => {});
-    };
-    playNext();
-  } else {
+  if (!card.audio.length || navigator.onLine === false) return speak(card);
+
+  const token = ++playToken;
+  let i = 0;
+  const fallback = () => {
+    if (token !== playToken) return;
+    stopAudio();
     speak(card);
-  }
+  };
+  const playNext = () => {
+    if (token !== playToken || i >= card.audio.length) return;
+    const a = new Audio(card.audio[i++]);
+    currentAudio = a;
+    clearTimeout(audioTimer);
+    audioTimer = setTimeout(fallback, AUDIO_TIMEOUT_MS);
+    a.onplaying = () => clearTimeout(audioTimer);
+    a.onended = playNext;
+    a.onerror = fallback; // broken link or no connection
+    a.play().catch(() => {}); // a real failure still fires onerror or the timeout
+  };
+  playNext();
 }
 function speak(card) {
   if (!('speechSynthesis' in window)) return;
@@ -116,6 +130,8 @@ function speak(card) {
   speechSynthesis.speak(u);
 }
 function stopAudio() {
+  playToken++;
+  clearTimeout(audioTimer);
   if (currentAudio) { currentAudio.onended = null; currentAudio.onerror = null; currentAudio.pause(); currentAudio = null; }
   if ('speechSynthesis' in window) speechSynthesis.cancel();
 }

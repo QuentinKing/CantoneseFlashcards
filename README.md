@@ -37,7 +37,14 @@ iOS needs the files served over HTTPS to install the app properly. The easiest f
 3. It now opens full-screen like a native app and works offline. Audio falls back to the
    built-in voice when you're offline.
 
-After you edit `cards.txt`, upload the folder again and the app picks up the change the next time it opens online.
+### Offline / weak signal
+
+After the first launch with a connection, the app always opens instantly from the copy stored
+on the phone and never waits on the network. It downloads updates quietly in the background, so
+after you push a change to `cards.txt` the new deck appears on the **second** launch.
+If a pronunciation recording hasn't started within 2 seconds (no signal, or a weak one), the
+app reads the word with the iPhone's Cantonese voice instead. To get a better voice, go to
+Settings, Accessibility, Spoken Content, Voices, Chinese (Hong Kong).
 
 ## Editing the deck (`cards.txt`)
 
