@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Cantonese Flashcards</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Flashcards">
+  <meta name="theme-color" content="#b3261e">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icon-180.png">
+  <link rel="icon" href="icon-192.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- HOME -->
+  <section id="home" class="screen">
+    <header class="hero">
+      <div class="hero-char">粵</div>
+      <h1>Cantonese Flashcards</h1>
+      <p id="card-count" class="muted">Loading cards…</p>
+    </header>
+    <h2 class="section-label">Study mode</h2>
+    <div class="mode-list">
+      <button class="mode-btn" data-mode="en-jy"><span>English</span><span class="arrow">→</span><span>Jyutping + audio</span></button>
+      <button class="mode-btn" data-mode="en-zh"><span>English</span><span class="arrow">→</span><span>Character</span></button>
+      <button class="mode-btn" data-mode="zh-en"><span>Character</span><span class="arrow">→</span><span>English</span></button>
+      <button class="mode-btn" data-mode="jy-en"><span>Jyutping + audio</span><span class="arrow">→</span><span>English</span></button>
+    </div>
+    <label class="toggle"><input type="checkbox" id="weak-first"> Study weakest cards first</label>
+    <button id="stats-btn" class="secondary wide">📊 Stats</button>
+    <p id="load-error" class="error hidden"></p>
+    <p class="credit muted">🤖 This app was entirely AI-generated (written by Claude, Anthropic's AI).</p>
+  </section>
+
+  <!-- STUDY -->
+  <section id="study" class="screen hidden">
+    <div class="topbar">
+      <button class="link" id="quit-btn">‹ Home</button>
+      <span id="progress" class="muted"></span>
+      <span id="score" class="muted"></span>
+    </div>
+    <div id="card" class="card">
+      <div class="side-label" id="side-label"></div>
+      <div id="card-content" class="card-content"></div>
+      <p class="hint" id="flip-hint">Tap to flip</p>
+    </div>
+    <div id="answer-btns" class="answer-btns hidden">
+      <button id="wrong-btn" class="wrong">✗ Got it wrong</button>
+      <button id="right-btn" class="right">✓ Got it right</button>
+    </div>
+  </section>
+
+  <!-- DONE -->
+  <section id="done" class="screen hidden">
+    <div class="hero">
+      <div class="hero-char">好！</div>
+      <h1>Session complete</h1>
+      <p id="done-summary" class="big"></p>
+    </div>
+    <button id="again-btn" class="primary wide">Study again</button>
+    <button id="done-home-btn" class="secondary wide">Home</button>
+  </section>
+
+  <!-- STATS -->
+  <section id="stats" class="screen hidden">
+    <div class="topbar">
+      <button class="link" id="stats-back">‹ Home</button>
+      <span class="muted">All-time accuracy</span>
+      <span></span>
+    </div>
+    <p id="stats-overall" class="muted center"></p>
+    <div class="sort-row">
+      Sort:
+      <select id="stats-sort">
+        <option value="file">Deck order</option>
+        <option value="worst">Lowest accuracy</option>
+        <option value="best">Highest accuracy</option>
+        <option value="most">Most studied</option>
+      </select>
+    </div>
+    <ul id="stats-list" class="stats-list"></ul>
+    <button id="reset-btn" class="danger wide">Reset all stats</button>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
