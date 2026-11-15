@@ -3,6 +3,7 @@
 > **🤖 AI-generated project.** All of the code, the card data and this README were written
 > by an AI coding assistant (Claude, by Anthropic), not by the repository owner. The owner
 > asked for the app and uses it to study Cantonese, but makes no claim to having written any of it.
+> (I'm on a windows laptop and need to deploy to an iOS, so I have to use a public repo for github pages lol)
 
 A small flashcard app for learning Cantonese. It's a web app (PWA), so the same
 files run on Windows for testing and install on an iPhone as a home-screen app.
