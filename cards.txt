@@ -7,31 +7,22 @@
 #   (it builds audio/<jyutping>.wav from the CUHK syllable recordings and fills the field in).
 # - If the audio link is blank the app falls back to the device's Cantonese text-to-speech voice.
 # - Lines starting with # are ignored.
-hello,你好,nei5 hou2,audio/nei5-hou2.wav
 thank you (for a service) / excuse me,唔該,m4 goi1,audio/m4-goi1.wav
-thank you (for a gift),多謝,do1 ze6,audio/do1-ze6.wav
-sorry,對唔住,deoi3 m4 zyu6,audio/deoi3-m4-zyu6.wav
-yes / to be,係,hai6,audio/hai6.wav
-no / is not,唔係,m4 hai6,audio/m4-hai6.wav
+to know (a person) / to meet,認識,jing6 sik1,audio/jing6-sik1.wav
+happy / glad,高興,gou1 hing3,audio/gou1-hing3.wav
+to be / yes,係,hai6,audio/hai6.wav
+also / both / all,都,dou1,audio/dou1.wav
+to be called / to call,叫,giu3,audio/giu3.wav
+Cantonese (language),廣東話,gwong2 dung1 waa2,audio/gwong2-dung1-waa2.wav
+slow,慢,maan6,audio/maan6.wav
+a bit more (suffix e.g. 慢啲 = slower),啲,di1,
+to help,幫,bong1,audio/bong1.wav
+to write down,寫低,se2 dai1,audio/se2-dai1.wav
+how do you say,點講,dim2 gong2,audio/dim2-gong2.wav
 I / me,我,ngo5,audio/ngo5.wav
+person,人,jan4,audio/jan4.wav
+better,好啲,hou2 di1,
 you,你,nei5,audio/nei5.wav
-he / she / it,佢,keoi5,audio/keoi5.wav
-we / us,我哋,ngo5 dei6,audio/ngo5-dei6.wav
-good,好,hou2,audio/hou2.wav
-to eat,食,sik6,audio/sik6.wav
-to drink,飲,jam2,audio/jam2.wav
-water,水,seoi2,audio/seoi2.wav
-cooked rice / meal,飯,faan6,audio/faan6.wav
-tea,茶,caa4,audio/caa4.wav
-to go,去,heoi3,audio/heoi3.wav
-to come,嚟,lai4,audio/lai4.wav
-what,乜嘢,mat1 je5,audio/mat1-je5.wav
-where,邊度,bin1 dou6,audio/bin1-dou6.wav
-who,邊個,bin1 go3,audio/bin1-go3.wav
-how much money,幾多錢,gei2 do1 cin2,audio/gei2-do1-cin2.wav
-today,今日,gam1 jat6,audio/gam1-jat6.wav
-tomorrow,聽日,ting1 jat6,audio/ting1-jat6.wav
-yesterday,尋日,cam4 jat6,audio/cam4-jat6.wav
 one,一,jat1,audio/jat1.wav
 two,二,ji6,audio/ji6.wav
 three,三,saam1,audio/saam1.wav
@@ -42,18 +33,18 @@ seven,七,cat1,audio/cat1.wav
 eight,八,baat3,audio/baat3.wav
 nine,九,gau2,audio/gau2.wav
 ten,十,sap6,audio/sap6.wav
-person,人,jan4,audio/jan4.wav
-friend,朋友,pang4 jau5,audio/pang4-jau5.wav
-home,屋企,uk1 kei2,audio/uk1-kei2.wav
-mother,媽媽,maa4 maa1,audio/maa4-maa1.wav
-father,爸爸,baa1 baa1,audio/baa1-baa1.wav
-big,大,daai6,audio/daai6.wav
-small,細,sai3,audio/sai3.wav
-to like,鍾意,zung1 ji3,audio/zung1-ji3.wav
-to have / there is,有,jau5,audio/jau5.wav
-to not have / there isn't,冇,mou5,audio/mou5.wav
-to know (a fact),知道,zi1 dou3,audio/zi1-dou3.wav
-money,錢,cin2,audio/cin2.wav
-hot (weather),熱,jit6,audio/jit6.wav
-cold (to the touch),凍,dung3,audio/dung3.wav
-bye-bye,拜拜,baai1 baai3,audio/baai1-baai3.wav
+one hundred,一百,jat1 baak3,audio/jat1-baak3.wav
+one thousand,一千,jat1 cin1,audio/jat1-cin1.wav
+ten thousand,一萬,jat1 maan6,audio/jat1-maan6.wav
+to learn / to study,學,hok6,audio/hok6.wav
+to do / to make,做,zou6,audio/zou6.wav
+sorry / excuse me (apologetic),唔好意思,m4 hou2 ji3 si1,audio/m4-hou2-ji3-si1.wav
+Miss / young lady,小姐,siu2 ze2,audio/siu2-ze2.wav
+no problem,冇問題,mou5 man6 tai4,audio/mou5-man6-tai4.wav
+Mr. / sir / husband,先生,sin1 saang1,audio/sin1-saang1.wav
+handsome guy,靚仔,leng3 zai2,audio/leng3-zai2.wav
+pretty girl,靚女,leng3 neoi5,audio/leng3-neoi5.wav
+fruit juice,果汁,gwo2 zap1,audio/gwo2-zap1.wav
+water,水,seoi2,audio/seoi2.wav
+possessive particle ('s),嘅,ge3,
+you're welcome / don't be polite,唔使客氣,m4 sai2 haak3 hei3,audio/m4-sai2-haak3-hei3.wav
