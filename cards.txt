@@ -1,56 +1,59 @@
 # Cantonese flashcards database - one card per line.
 # Format: English definition,Chinese character,Jyutping,Audio link (optional)
 # - Don't use commas inside a field (or wrap the field in double quotes).
-# - Audio link may be blank, one URL, or several URLs separated by spaces (played in order).
+# - Audio link may be blank, a file in this folder (e.g. audio/nei5-hou2.wav), a URL, or several
+#   links separated by spaces (played in order).
+# - To make audio for new cards, leave the field blank and run: tools\build-audio.ps1
+#   (it builds audio/<jyutping>.wav from the CUHK syllable recordings and fills the field in).
 # - If the audio link is blank the app falls back to the device's Cantonese text-to-speech voice.
 # - Lines starting with # are ignored.
-hello,你好,nei5 hou2,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/nei5.wav https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/hou2.wav
-thank you (for a service) / excuse me,唔該,m4 goi1,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/m4.wav https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/goi1.wav
-thank you (for a gift),多謝,do1 ze6,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/do1.wav https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/ze6.wav
-sorry,對唔住,deoi3 m4 zyu6,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/deoi3.wav https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/m4.wav https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/zyu6.wav
-yes / to be,係,hai6,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/hai6.wav
-no / is not,唔係,m4 hai6,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/m4.wav https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/hai6.wav
-I / me,我,ngo5,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/ngo5.wav
-you,你,nei5,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/nei5.wav
-he / she / it,佢,keoi5,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/keoi5.wav
-we / us,我哋,ngo5 dei6,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/ngo5.wav https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/dei6.wav
-good,好,hou2,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/hou2.wav
-to eat,食,sik6,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/sik6.wav
-to drink,飲,jam2,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/jam2.wav
-water,水,seoi2,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/seoi2.wav
-cooked rice / meal,飯,faan6,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/faan6.wav
-tea,茶,caa4,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/caa4.wav
-to go,去,heoi3,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/heoi3.wav
-to come,嚟,lai4,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/lai4.wav
-what,乜嘢,mat1 je5,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/mat1.wav https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/je5.wav
-where,邊度,bin1 dou6,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/bin1.wav https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/dou6.wav
-who,邊個,bin1 go3,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/bin1.wav https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/go3.wav
-how much money,幾多錢,gei2 do1 cin2,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/gei2.wav https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/do1.wav https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/cin2.wav
-today,今日,gam1 jat6,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/gam1.wav https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/jat6.wav
-tomorrow,聽日,ting1 jat6,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/ting1.wav https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/jat6.wav
-yesterday,尋日,cam4 jat6,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/cam4.wav https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/jat6.wav
-one,一,jat1,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/jat1.wav
-two,二,ji6,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/ji6.wav
-three,三,saam1,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/saam1.wav
-four,四,sei3,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/sei3.wav
-five,五,ng5,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/ng5.wav
-six,六,luk6,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/luk6.wav
-seven,七,cat1,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/cat1.wav
-eight,八,baat3,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/baat3.wav
-nine,九,gau2,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/gau2.wav
-ten,十,sap6,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/sap6.wav
-person,人,jan4,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/jan4.wav
-friend,朋友,pang4 jau5,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/pang4.wav https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/jau5.wav
-home,屋企,uk1 kei2,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/uk1.wav https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/kei2.wav
-mother,媽媽,maa4 maa1,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/maa4.wav https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/maa1.wav
-father,爸爸,baa1 baa1,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/baa1.wav https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/baa1.wav
-big,大,daai6,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/daai6.wav
-small,細,sai3,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/sai3.wav
-to like,鍾意,zung1 ji3,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/zung1.wav https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/ji3.wav
-to have / there is,有,jau5,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/jau5.wav
-to not have / there isn't,冇,mou5,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/mou5.wav
-to know (a fact),知道,zi1 dou3,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/zi1.wav https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/dou3.wav
-money,錢,cin2,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/cin2.wav
-hot (weather),熱,jit6,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/jit6.wav
-cold (to the touch),凍,dung3,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/dung3.wav
-bye-bye,拜拜,baai1 baai3,https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/baai1.wav https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/sound/baai3.wav
+hello,你好,nei5 hou2,audio/nei5-hou2.wav
+thank you (for a service) / excuse me,唔該,m4 goi1,audio/m4-goi1.wav
+thank you (for a gift),多謝,do1 ze6,audio/do1-ze6.wav
+sorry,對唔住,deoi3 m4 zyu6,audio/deoi3-m4-zyu6.wav
+yes / to be,係,hai6,audio/hai6.wav
+no / is not,唔係,m4 hai6,audio/m4-hai6.wav
+I / me,我,ngo5,audio/ngo5.wav
+you,你,nei5,audio/nei5.wav
+he / she / it,佢,keoi5,audio/keoi5.wav
+we / us,我哋,ngo5 dei6,audio/ngo5-dei6.wav
+good,好,hou2,audio/hou2.wav
+to eat,食,sik6,audio/sik6.wav
+to drink,飲,jam2,audio/jam2.wav
+water,水,seoi2,audio/seoi2.wav
+cooked rice / meal,飯,faan6,audio/faan6.wav
+tea,茶,caa4,audio/caa4.wav
+to go,去,heoi3,audio/heoi3.wav
+to come,嚟,lai4,audio/lai4.wav
+what,乜嘢,mat1 je5,audio/mat1-je5.wav
+where,邊度,bin1 dou6,audio/bin1-dou6.wav
+who,邊個,bin1 go3,audio/bin1-go3.wav
+how much money,幾多錢,gei2 do1 cin2,audio/gei2-do1-cin2.wav
+today,今日,gam1 jat6,audio/gam1-jat6.wav
+tomorrow,聽日,ting1 jat6,audio/ting1-jat6.wav
+yesterday,尋日,cam4 jat6,audio/cam4-jat6.wav
+one,一,jat1,audio/jat1.wav
+two,二,ji6,audio/ji6.wav
+three,三,saam1,audio/saam1.wav
+four,四,sei3,audio/sei3.wav
+five,五,ng5,audio/ng5.wav
+six,六,luk6,audio/luk6.wav
+seven,七,cat1,audio/cat1.wav
+eight,八,baat3,audio/baat3.wav
+nine,九,gau2,audio/gau2.wav
+ten,十,sap6,audio/sap6.wav
+person,人,jan4,audio/jan4.wav
+friend,朋友,pang4 jau5,audio/pang4-jau5.wav
+home,屋企,uk1 kei2,audio/uk1-kei2.wav
+mother,媽媽,maa4 maa1,audio/maa4-maa1.wav
+father,爸爸,baa1 baa1,audio/baa1-baa1.wav
+big,大,daai6,audio/daai6.wav
+small,細,sai3,audio/sai3.wav
+to like,鍾意,zung1 ji3,audio/zung1-ji3.wav
+to have / there is,有,jau5,audio/jau5.wav
+to not have / there isn't,冇,mou5,audio/mou5.wav
+to know (a fact),知道,zi1 dou3,audio/zi1-dou3.wav
+money,錢,cin2,audio/cin2.wav
+hot (weather),熱,jit6,audio/jit6.wav
+cold (to the touch),凍,dung3,audio/dung3.wav
+bye-bye,拜拜,baai1 baai3,audio/baai1-baai3.wav

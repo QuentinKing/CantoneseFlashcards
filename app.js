@@ -86,26 +86,104 @@ function recordResult(card, mode, correct) {
 const accuracy = (s) => (s && s.total ? s.right / s.total : null);
 
 // ---------- Audio ----------
+//
+// Local recordings (audio/*.wav, same site as the app) play through the Web Audio API:
+// the file is fetched and decoded by the app, so it works offline from the cache and
+// avoids iOS Safari's fussy <audio> element. Links to other websites still use <audio>.
+// iOS only allows sound to start from a tap, so the audio engine is "unlocked" on every tap.
 
-// If a recording hasn't started playing within this time (weak/no signal),
+// If a recording hasn't started within this time (weak/no signal),
 // give up on it and use the device's Cantonese text-to-speech voice instead.
 const AUDIO_TIMEOUT_MS = 2000;
 
-let currentAudio = null;
+let audioCtx = null;
+let currentAudio = null;   // <audio> element for external links
+let currentSources = [];   // Web Audio sources for local files
 let audioTimer = null;
 let playToken = 0; // bumps on every play/stop so stale callbacks are ignored
+const bufferCache = new Map(); // url -> Promise<AudioBuffer>
+
+function getAudioCtx() {
+  if (!audioCtx) {
+    const Ctx = window.AudioContext || window.webkitAudioContext;
+    if (Ctx) audioCtx = new Ctx();
+  }
+  return audioCtx;
+}
+
+function unlockAudio() {
+  // Play through the speaker even when the iPhone's silent switch is on (Safari 16.4+).
+  try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch { /* unsupported */ }
+  const ctx = getAudioCtx();
+  if (!ctx || ctx.state === 'running') return;
+  ctx.resume().catch(() => {});
+  // Older iOS also needs a sound started inside the tap; a 1-sample silent buffer does it.
+  try {
+    const src = ctx.createBufferSource();
+    src.buffer = ctx.createBuffer(1, 1, 22050);
+    src.connect(ctx.destination);
+    src.start(0);
+  } catch { /* ignore */ }
+}
+['touchend', 'click', 'keydown'].forEach((t) => document.addEventListener(t, unlockAudio, { capture: true, passive: true }));
+
+const isLocalUrl = (u) => { try { return new URL(u, location.href).origin === location.origin; } catch { return false; } };
+
+function loadBuffer(url) {
+  if (!bufferCache.has(url)) {
+    const ctx = getAudioCtx();
+    const p = fetch(url)
+      .then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.arrayBuffer(); })
+      // Callback form of decodeAudioData works on older Safari too.
+      .then((data) => new Promise((resolve, reject) => ctx.decodeAudioData(data, resolve, reject)));
+    p.catch(() => bufferCache.delete(url)); // allow a retry later
+    bufferCache.set(url, p);
+  }
+  return bufferCache.get(url);
+}
+
+// Starts downloading/decoding a card's audio so the tap plays instantly.
+function preloadCard(card) {
+  if (card && card.audio.length && getAudioCtx() && card.audio.every(isLocalUrl)) {
+    card.audio.forEach((u) => loadBuffer(u).catch(() => {}));
+  }
+}
 
 function playCard(card) {
   stopAudio();
-  if (!card.audio.length || navigator.onLine === false) return speak(card);
+  if (!card.audio.length) return speak(card);
+  const local = card.audio.every(isLocalUrl);
+  if (!local && navigator.onLine === false) return speak(card);
 
   const token = ++playToken;
-  let i = 0;
   const fallback = () => {
     if (token !== playToken) return;
     stopAudio();
     speak(card);
   };
+  audioTimer = setTimeout(fallback, AUDIO_TIMEOUT_MS);
+
+  const ctx = getAudioCtx();
+  if (local && ctx) {
+    Promise.all(card.audio.map(loadBuffer)).then((buffers) => {
+      if (token !== playToken) return;
+      clearTimeout(audioTimer);
+      if (ctx.state !== 'running') ctx.resume().catch(() => {});
+      let t = ctx.currentTime + 0.03;
+      currentSources = buffers.map((buf) => {
+        const src = ctx.createBufferSource();
+        src.buffer = buf;
+        src.connect(ctx.destination);
+        src.start(t);
+        t += buf.duration;
+        return src;
+      });
+    }, fallback);
+    return;
+  }
+
+  // External links: chain <audio> elements, one per URL.
+  let i = 0;
   const playNext = () => {
     if (token !== playToken || i >= card.audio.length) return;
     const a = new Audio(card.audio[i++]);
@@ -133,6 +211,8 @@ function stopAudio() {
   playToken++;
   clearTimeout(audioTimer);
   if (currentAudio) { currentAudio.onended = null; currentAudio.onerror = null; currentAudio.pause(); currentAudio = null; }
+  currentSources.forEach((s) => { try { s.stop(); } catch { /* already stopped */ } });
+  currentSources = [];
   if ('speechSynthesis' in window) speechSynthesis.cancel();
 }
 
@@ -175,6 +255,8 @@ function renderCard() {
   const m = MODES[mode];
   const content = $('card-content');
   content.replaceChildren();
+  preloadCard(card);
+  preloadCard(queue[index + 1]);
 
   $('progress').textContent = `${index + 1} / ${queue.length}`;
   $('score').textContent = `✓${session.right} ✗${session.wrong}`;
