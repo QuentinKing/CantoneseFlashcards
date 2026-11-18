@@ -149,12 +149,12 @@ for ($i = 0; $i -lt $lines.Length; $i++) {
   $f = [CantoAudio]::SplitCsv($line)
   while ($f.Count -lt 4) { $f.Add('') }
   $audio = $f[3]
-  $isOurs = (-not $audio) -or $audio.Contains('humanum.arts.cuhk.edu.hk') -or $audio.StartsWith('audio/')
-  if (-not $isOurs) { $skipped++; continue }
-
   $syllables = @($f[2].ToLower() -split '\s+' | Where-Object { $_ })
   if (-not $syllables.Count) { continue }
   $name = ($syllables -join '-') + '.wav'
+  # Only touch blank fields, old CUHK links, or a file this script built itself.
+  $isOurs = (-not $audio) -or $audio.Contains('humanum.arts.cuhk.edu.hk') -or ($audio -eq "audio/$name")
+  if (-not $isOurs) { $skipped++; continue }
   $out = Join-Path $audioDir $name
   if ($Force -or -not (Test-Path $out)) {
     try {

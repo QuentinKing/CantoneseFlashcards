@@ -69,13 +69,17 @@ water,水,seoi2,
 
 ### Audio source
 
-The recordings in `audio/` are built from the per-syllable recordings in the CUHK
-*Chinese Character Database* (humanum.arts.cuhk.edu.hk/Lexis/lexi-can). The originals are 8-bit,
-11 kHz WAVs from 2005, which iOS Safari won't play and Android Chrome plays distorted, so
-`tools/build-audio.ps1` converts them to standard 16-bit WAV and joins each word's syllables into
-one file. Each word is made of separately recorded syllables, so it sounds a little choppy
-compared with natural speech, but each tone is clear. All rights to the original recordings
-belong to their owners; they are included here only for personal study.
+The current deck's words and `audio/*.mp3` recordings come from the owner's own
+**CantoneseClass101** word bank (cantoneseclass101.com). All rights to those recordings belong to
+CantoneseClass101 / Innovative Language Learning; they are included here only for the owner's
+personal study and are not licensed for reuse.
+
+`tools/build-audio.ps1` can also make audio for new cards from the per-syllable recordings in the
+CUHK *Chinese Character Database* (humanum.arts.cuhk.edu.hk/Lexis/lexi-can). Those originals are
+8-bit, 11 kHz WAVs from 2005, which iOS Safari won't play and Android Chrome plays distorted, so
+the script converts them to standard 16-bit WAV and joins each word's syllables into one file.
+They sound a little choppy compared with natural speech, but each tone is clear. All rights to
+those recordings belong to their owners as well.
 
 ## Stats
 
